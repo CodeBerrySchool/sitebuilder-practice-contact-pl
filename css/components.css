@@ -1,0 +1,323 @@
+/**
+ * OGÓLNIE
+ *
+ * Ten plik opisuje komponenty potrzebne do budowy strony.
+ * Od wewnętrznego layoutu do koloru czcionki, itd.
+ * 
+ *
+ * Pokazane było wcześniej, ale teraz myślenie jak BEM (Block–Element–Modifier)
+ * jest jeszcze lepiej widoczne w kodzie. Jeśli pierwszy raz słyszysz
+ * o BEM, polecamy przeczytanie następującej sekcji w przewodniku CSS
+ * Harry’ego Robertsa: https://cssguidelin.es/#bem-like-naming.
+ */
+
+
+/**
+ * SPIS TREŚCI
+ *
+ * 1. PRZYCISKI
+ *
+ * 2. HEADER
+ *
+ * 3. NAWIGACJA
+ *
+ * 4. INFORMACJE KONTAKTOWE
+ *
+ * 5. FORMULARZ KONTAKTOWY
+ *
+ * 6. FOOTER
+ */
+
+
+
+
+
+/*------------------------------------*\
+  #PRZYCISKI
+\*------------------------------------*/
+
+/**
+ * 1. Usuwamy border, aby nie rozpraszał nas podczas ustawiania paddingu.
+ * Nie jest też koniecznie umieszczanie border na całym przycisku. :)
+ *
+ */
+
+ .button {
+  display:        inline-block;
+  border:         2px solid;
+  border-radius:  1.786rem;
+  text-align:     center;
+}
+
+  .button--primary-solid {
+    border:           0; /* [1] */
+    background-color: #6200ea;
+    color:            #ffffff;
+  }
+
+  .button--primary-solid:visited { color: #ffffff; }
+
+
+
+
+
+/*------------------------------------*\
+  #HEADER
+\*------------------------------------*/
+
+.header {
+  height:           80px;
+  background-color: #6200ea;
+}
+
+  .logo {
+    float:  left;
+    margin: 1.017rem 0;
+  }
+
+
+
+
+
+/*------------------------------------*\
+  #NAWIGACJA
+\*------------------------------------*/
+
+/**
+ * 1. Ten padding potrzebny jest na stronie do wyświetlania białego paska
+ * efektu hover we właściwym miejscu.
+ *
+ * 2. Dajemy linkowi dolny border, który domyślnie jest niewidoczny. Użyjemy go
+ * później do wyświetlenia szarego paska podczas wykonywania czynności hover.
+ * Border jest domyślnie niewidoczny, więc musimy tylko zmienić kolor,
+ * aby interfejs nie skakał, co robiłby, gdybyśmy dodali border podczas 
+ * czynności border.
+ *
+ * 3. Ta reguła usuwa niepotrzebny lewy margin
+ * z pierwszego linka.
+ */
+
+.navigation { height: 80px; }
+
+  .navigation__link-container {
+    float:        right;
+    padding-top:  2.321rem;
+  }
+
+    .navigation__link {
+      vertical-align: middle;
+      padding-bottom: 2rem; /* [1] */
+      border-bottom:  4px solid; /* [2] */
+      border-color:   transparent; /* [2] */
+      margin-left:    4.571rem;
+      color:          #f4f3f5;
+      opacity:        0.65;
+      font-size:      .857rem;
+      font-weight:    bold;
+      text-transform: uppercase;
+      letter-spacing: .171rem;
+    }
+
+    a.navigation__link:first-child { margin-left: 0; } /* [3] */
+
+    .navigation__link:visited { color: #f4f3f5; }
+
+    .navigation__link:hover {
+      border-color:   #ffffff;
+      color:          #ffffff;
+      opacity:        1;
+    }
+
+
+
+
+
+/*------------------------------------*\
+  #INFORMACJE KONTAKTOWE
+\*------------------------------------*/
+
+/**
+ * 1. Elementy anchor są domyślnie elementami inline. Jeśli chcemy wyświetlić
+ * je obok siebie oraz kontrolować wartość marginesów, paddingu itd., musimy
+ * przekonwertować je w elementy block lub inline-block.
+ *
+ * 2. Musimy nadpisać domyślny heading bottom margin.
+ *
+ * 3. Ten zbiór reguł tworzy okrągłe tło dla ikonek social mediów.
+ *
+ * 4. Jeśli element potrzebuje okrągły border, bardzo ważne jest ustawienie mu 
+ * jednakowej szerokości i wysokości. W przeciwnym razie, wyjdzie nam owal.
+ *  Wielkość paddingów też musi być taka sama po każdej stronie.
+ *
+ * 5. Możesz zrobić idealnie okrągły border używając 50% border radius,
+ * jeśli wysokość i szerokość są takie same.
+ *
+ * 6. Ten zbiór reguł zarządza ikonkami FontAwesome. Usuwa dodatkową
+ * szerokość i wysokość, którą domyślnie posiadają oraz 
+ * prawidłowo ustawia ich wielkość.
+ */
+
+.contact-info {
+  padding:          4.286rem;
+  border-radius:    1.071rem;
+  background-color: #ffffff;
+}
+
+  .contact-info__map {
+    width:         100%;
+    height:        280px;
+    border-radius: 1.071rem;
+  }
+
+  .contact-info__map,
+  .contact-info__address,
+  .contact-info__phone-email {
+    margin-bottom: 2.143rem;
+  }
+
+  .contact-info__social-media { margin-bottom: .357rem; }
+
+    .contact-info__heading,
+    .contact-info__link {
+      color: #6200ea;
+    }
+
+    .contact-info__link {
+      display:        block; /* [1] */
+      margin-bottom:  .714rem;
+      font-size:      .857rem;
+      font-weight:    bold;
+      text-transform: uppercase;
+      letter-spacing: .171rem;
+    }
+
+    .contact-info__heading {
+      margin-bottom:  .7143rem; /* [2] */
+      font-size:      .857rem;
+      font-weight:    bold;
+      text-transform: uppercase;
+      letter-spacing: .171rem;
+    }
+
+    .contact-info__social-media-link { /* [3] */
+      display:          inline-block; /* [1] */
+      width:            2.857rem; /* [4] */
+      height:           2.857rem; /* [4] */
+      padding:          .714rem; /* [4] */
+      border-radius:    50%; /* [5] */
+      margin-right:     .714rem;
+      background-color: #6200ea;
+      text-align:       center;
+    }
+
+      .contact-info__social-media-icon { /* [6] */
+        color:          #ffffff;
+        font-size:      1.4285rem;
+      }
+
+
+
+
+
+/*------------------------------------*\
+#FORMULARZ KONTAKTOWY
+\*------------------------------------*/
+
+/**
+ * 1. Inputs są domyślnie elementami inline. Zanim zaczniemy ustawiać
+ * wartości marginesów, paddingów itd., musimy przekonwertować je w
+ * elementy block lub inline-block.
+ *
+ * 2. Najpierw tworzymy nieodłączny border dla inputu zero.
+ *
+ * 3. Dodajemy do inputu dolny border, który domyślnie jest niewidoczny. 
+ * Wykorzystamy go potem do wyświetlania fioletowego paska w focus.
+ * Border jest domyślnie niewidoczny, więc musimy tylko zmienić kolor,
+ * aby interfejs nie skakał, co robiłby, gdybyśmy dodali do focus
+ * element border.
+ *
+ * 4. Ten zbiór reguł formatuje teksty placeholdera.
+ *
+ * 5. Elementom textarea możemy nadać szerokość i wysokość. Tutaj
+ * używamy wcześniejszych.
+ *
+ * 6. Ten zbiór reguł formatuje przyciski zatwierdzające za pomocą
+ * reguł .button i .button--primary-solid.
+ */
+
+.contact-form {
+  padding:          4.286rem;
+  border-radius:    1.071rem;
+  background-color: #ffffff;
+}
+
+  .contact-form__header { margin-bottom: 1.429rem; }
+
+    .contact-form__title { margin-bottom: .7143rem}
+
+    .contact-form__cta {
+      font-size:   1.429rem;
+      line-height: 30px;
+    }
+
+  .contact-form__input-field {
+    display:          block; /* [1] */
+    width:            100%;
+    padding:          1.1428rem 0 .9286rem 1.7143rem;
+    border:           0; /* [2] */
+    border-bottom:    3px solid; /* [3] */
+    border-color:     transparent; /* [3] */
+    margin-bottom:    1.071rem;
+    background-color: #f4f3f5;
+    outline:          none;
+  }
+
+    .contact-form__input-field:focus { border-bottom-color: #6200ea; }
+
+    .contact-form__input-field::placeholder { /* [4] */
+      font-weight: bold;
+      opacity:     .25;
+    }
+
+  .contact-form__input-field--textarea {
+    height:        150px; /* [5] */
+    margin-bottom: 1.4286rem;
+  }
+
+  .contact-form__submit { /* [6] */
+    width:          100%;
+    padding:        1.286rem 0;
+    margin-bottom:  0;
+    font-size:      .857rem;
+    font-weight:    bold;
+    text-transform: uppercase;
+    letter-spacing: .171rem;
+  }
+
+
+
+
+
+/*------------------------------------*\
+  #FOOTER
+\*------------------------------------*/
+
+.footer {
+  height:           7.143rem;
+  padding:          3.071rem 0 3rem 0;
+  background-color: #211138;
+  text-align:       center;
+}
+
+  .footer__copyright {
+    color:          #b2acba;
+    font-size:      .857rem;
+    font-weight:    bold;
+    text-transform: uppercase;
+    letter-spacing: .171rem;
+  }
+
+  .footer__brand-name,
+  .footer__student-name {
+    color: #6200ea;
+  }
